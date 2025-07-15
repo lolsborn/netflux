@@ -196,11 +196,23 @@ const EpisodeDetails = () => {
             </span>
           </div>
 
-          {/* Description */}
+          {/* Episode Description */}
           <div className="space-y-2">
             <h3 className="text-lg font-semibold">Episode Description</h3>
-            <p className="text-gray-300 leading-relaxed">{episode.description}</p>
+            <p className="text-gray-300 leading-relaxed">
+              {episode.comedy_description || episode.description}
+            </p>
           </div>
+
+          {/* Director's Notes */}
+          {episode.comedy_description && (
+            <div className="space-y-2">
+              <h3 className="text-lg font-semibold">Director's Notes</h3>
+              <p className="text-gray-400 leading-relaxed text-sm italic">
+                {episode.description}
+              </p>
+            </div>
+          )}
 
           {/* Submitted By */}
           <div className="flex items-center space-x-2 text-sm text-gray-400">

@@ -163,7 +163,9 @@ const Episodes = () => {
                   </div>
                   
                   <h3 className="font-semibold text-lg mb-2 line-clamp-2">{episode.title}</h3>
-                  <p className="text-gray-400 text-sm line-clamp-3 mb-3">{episode.description}</p>
+                  <p className="text-gray-400 text-sm line-clamp-3 mb-3">
+                    {episode.comedy_description || episode.description}
+                  </p>
                   
                   <div className="flex items-center justify-between text-xs text-gray-500">
                     <span>by {episode.submitted_by}</span>

@@ -14,22 +14,28 @@ def create_db_and_tables():
     migrate_episode_table()
 
 def migrate_episode_table():
-    """Add image_url column to existing episode table if it doesn't exist"""
+    """Add image_url and comedy_description columns to existing episode table if they don't exist"""
     db_path = DATABASE_URL.replace("sqlite:///", "").replace("sqlite://", "")
     
     try:
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         
-        # Check if image_url column exists
+        # Check existing columns
         cursor.execute("PRAGMA table_info(episode)")
         columns = [column[1] for column in cursor.fetchall()]
         
+        # Add image_url column if it doesn't exist
         if 'image_url' not in columns:
-            # Add the image_url column
             cursor.execute("ALTER TABLE episode ADD COLUMN image_url TEXT")
             conn.commit()
             print("Added image_url column to episode table")
+        
+        # Add comedy_description column if it doesn't exist
+        if 'comedy_description' not in columns:
+            cursor.execute("ALTER TABLE episode ADD COLUMN comedy_description TEXT")
+            conn.commit()
+            print("Added comedy_description column to episode table")
         
         conn.close()
     except Exception as e:

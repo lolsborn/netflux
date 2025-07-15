@@ -39,6 +39,7 @@ from models import Episode, EpisodeCreate, EpisodeRead, AdminSettings, AdminSett
 from database import get_session
 from image_service import image_service
 from title_service import title_service
+from episode_description_service import episode_description_service
 from datetime import datetime
 
 @app.get("/")
@@ -61,10 +62,15 @@ async def create_episode(episode: EpisodeCreate, session: Session = Depends(get_
     print(f"🎬 Generating title for episode by {episode.submitted_by}")
     generated_title = await title_service.generate_episode_title(episode.description)
     
-    # Create episode in database with generated title
+    # Generate comedy description using ChatGPT
+    print(f"🎭 Generating comedy description for episode by {episode.submitted_by}")
+    comedy_description = await episode_description_service.generate_episode_description(generated_title, episode.description)
+    
+    # Create episode in database with generated title and comedy description
     db_episode = Episode(
         title=generated_title,
         description=episode.description,
+        comedy_description=comedy_description,
         submitted_by=episode.submitted_by
     )
     session.add(db_episode)
