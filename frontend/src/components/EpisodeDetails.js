@@ -46,7 +46,7 @@ const EpisodeDetails = () => {
     if (episode.image_url) {
       return (
         <img 
-          src={`http://localhost:8000${episode.image_url}`}
+          src={`${process.env.REACT_APP_API_BASE_URL || 'https://netflux-production.up.railway.app'}${episode.image_url}`} 
           alt={episode.title}
           className="w-full h-full object-cover"
           onError={(e) => {
