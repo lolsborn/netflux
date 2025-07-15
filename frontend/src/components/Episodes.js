@@ -32,7 +32,7 @@ const Episodes = () => {
     if (episode.image_url) {
       return (
         <img 
-          src={`${process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000'}${episode.image_url}`}
+          src={`${process.env.REACT_APP_API_BASE_URL || 'https://netflux-production.up.railway.app/'}${episode.image_url}`}
           alt={episode.title}
           className="w-full h-full object-cover"
           onError={(e) => {
@@ -111,7 +111,7 @@ const Episodes = () => {
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <img 
-            src={`${process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000'}/static/images/casemark-logo.svg`} 
+            src={`${process.env.REACT_APP_API_BASE_URL || 'https://netflux-production.up.railway.app'}/static/images/casemark-logo.svg`} 
             alt="CaseMark Logo" 
             style={{height: '42px'}}
           />
