@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://netflux-production.up.railway.app/';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://netflux-production.up.railway.app';
 
 class ApiService {
   async request(endpoint, options = {}) {

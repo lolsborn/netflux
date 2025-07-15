@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Star, Plus } from 'lucide-react';
+import { Star } from 'lucide-react';
 import ApiService from '../api';
 
 const Episodes = () => {
@@ -108,7 +108,7 @@ const Episodes = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex items-center justify-center">
         <div className="flex items-center space-x-3">
           <img 
             src={`${process.env.REACT_APP_API_BASE_URL || 'https://netflux-production.up.railway.app'}/static/images/casemark-logo.svg`} 
@@ -117,13 +117,6 @@ const Episodes = () => {
           />
           <h2 className="text-2xl font-semibold">Chronicles - Season 6</h2>
         </div>
-        <button
-          onClick={() => navigate('/submit')}
-          className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
-        >
-          <Plus size={16} />
-          <span>New Episode</span>
-        </button>
       </div>
 
       {episodes.length === 0 ? (
