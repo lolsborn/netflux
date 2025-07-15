@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Star, Clock, Plus } from 'lucide-react';
+import { Star, Plus } from 'lucide-react';
 import ApiService from '../api';
 
 const Episodes = () => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Star, Clock, Calendar, User } from 'lucide-react';
 import ApiService from '../api';
@@ -10,11 +10,7 @@ const EpisodeDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    loadEpisode();
-  }, [id]);
-
-  const loadEpisode = async () => {
+  const loadEpisode = useCallback(async () => {
     try {
       setLoading(true);
       try {
@@ -39,8 +35,11 @@ const EpisodeDetails = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
 
+  useEffect(() => {
+    loadEpisode();
+  }, [loadEpisode]);
 
   const generatePreviewImage = (episode) => {
     // If episode has an image_url, use it

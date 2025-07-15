@@ -27,7 +27,7 @@ const Home = () => {
         // Step 2: Generating AI image
         setSubmissionStep(2);
         console.log('Submitting episode:', newEpisode);
-        const response = await ApiService.createEpisode(newEpisode);
+        await ApiService.createEpisode(newEpisode);
         
         // Step 3: Complete
         setSubmissionStep(3);
